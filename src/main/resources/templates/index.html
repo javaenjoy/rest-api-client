@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="/webjars/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+
+            //사용자 목록 조회 버튼 클릭
+            $('#retriveUserAllBtn').on("click", function () {
+
+                $.ajax({
+                    url: '/retrieveUserAll',
+                    method: 'GET',
+                    dataType: 'json',
+                    success: function (data) {
+                       console.log(data);
+                    },
+                    error: function (ex) {
+                        console.log(ex);
+                    }
+                })
+
+            });
+
+        })
+
+    </script>
+</head>
+<body>
+
+<button type="button" th:id="retriveUserAllBtn">사용자 목록 조회</button><br>
+<button type="button" th:id="retriveUserByIdBtn">사용자 상세 조회</button><br>
+<button type="button" th:id="registerUserBtn">사용자 등록</button><br>
+</body>
+</html>
